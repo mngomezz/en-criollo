@@ -14,13 +14,17 @@ Para el segundo problema propuesto es aun peor ya que iteraremos para cada eleme
 
 La tactica de la ventana flotante sugiere que para cada elemento del array no se itere _k_ veces si no que la suma se realice para el primer elemento del array (el primer subarray) y luego para obtener la suma de los siguientes subarrays solo **se resta el primer elemento y se agrega el siguiente**. De esta manera, con tan solo iterar 1 vez por el array uno ya obtiene aquel subarray mayor.
 
+De esta manera, para hallar el mejor subconjunto de tamaño _k_ usando ventana flotante solo hacemos la suma inicial (primeros _k_ elementos) y luego iteramos _n-k_ veces y solo debemos restar el primer elemento del subarray, es decir, comienzo de la ventana flotante (_i-1_) y luego agregarle el siguiente elemento, es decir, proximo al final de la ventana (_i+k_). Asi, nos ahorramos las cuentas de cada subconjunto y al llegar al ultimo elemento ya obtendremos el mejor subconjunto.
+
+Luego, para hallar el minimo subconjunto mayor a _x_ solo debemos hacer la suma inicial hasta hallar la cantidad de elementos necesarios hasta superar dicho numero. Una vez hallado ese numero vamos acortando la ventana del lado inferior (izquierdo) hasta que deje de ser mayor a _x_. Una vez sucede eso vamos integrando mas numeros del lado superior (derecho) del array y asi hasta llegar al final del conjunto.
+
 ## ¿Cuando usarlo?
 
 Cuando se requiera obtener combinaciones consecutivas de un array de elementos y no se quiera iterar por todos los elementos. Las palabras claves para entender cuando usarlo son:
 
 *Array, String, Sub Array, Sub String, Largest Sum, Maximum Sum, Minimum Sum*
 
-Por tanto, vemos que los problemas que resuelve son cuando en un array queremos obtener la minima o maxima suma de elementos subyacentes
+Por tanto, vemos que los problemas que resuelve son **cuando queremos obtener la minima o maxima suma de elementos subyacentes en un array**
 
 ## Complejidad
 
@@ -35,9 +39,9 @@ Esto nos permite obtener una mejora de **_O(N)_** donde antes podiamos tener un 
 
 ![Ventana flotante paso final](../images/algoritmos/sliding-window-3.png)
 
-## Implementaciones
+## Codigo
 
-### Ventana flotante fija
+### Ventana flotante fija en Python
 
 ```python
 def ventana_flotante_fija(array: list[int], k: int) -> list[int]:
@@ -58,7 +62,7 @@ def ventana_flotante_fija(array: list[int], k: int) -> list[int]:
     return maximo
 ```
 
-### Ventana flotante dinamica
+### Ventana flotante dinamica en Python
 
 ```python
 def ventana_flotante_dinamica(array: list[int], x: int) -> int:
@@ -87,3 +91,11 @@ def ventana_flotante_dinamica(array: list[int], x: int) -> int:
 
     return tamaño_ventana_minima
 ```
+
+
+## Implementaciones
+
+**TODO: Mencionar como se usa en algoritmo de congestion TCP.**
+
+**TODO: Mencionar como se usa en algoritmo de compresion LZ77.**
+
