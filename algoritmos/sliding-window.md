@@ -50,8 +50,7 @@ def ventana_flotante_fija(array: list[int], k: int) -> list[int]:
     suma_actual = sum(array[:k])
     maximo = suma_actual
 
-    # Obtenemos cada subarray subsecuente adicionando el siguiente valor (i+k-1)
-    # y removemos el ultimo (i-1)
+    # Obtenemos cada suma adicionando el siguiente valor (i+k-1) y removemos el ultimo (i-1)
     for i in range(0, len(array) - k):
         suma_actual = suma_actual - array[i]
         suma_actual = suma_actual + array[i+k]
@@ -67,7 +66,7 @@ def ventana_flotante_fija(array: list[int], k: int) -> list[int]:
 ```python
 def ventana_flotante_dinamica(array: list[int], x: int) -> int:
     """Obtiene el tamaño minimo de la ventana cuya suma supere el numero x"""
-    tamaño_ventana_minima = float('inf')
+    ventana_minima = float('inf')
 
     # Obtenemos el rango y suma de nuestra ventana flotante
     comienzo_de_ventana = 0
@@ -85,11 +84,10 @@ def ventana_flotante_dinamica(array: list[int], x: int) -> int:
             comienzo_de_ventana = comienzo_de_ventana + 1
 
             # Actualizamos tamaño minimo de ventana superior a x
-            tamaño_ventana_actual = final_de_ventana - comienzo_de_ventana + 1
-            tamaño_ventana_minima = min(
-                tamaño_ventana_minima, tamaño_ventana_actual)
+            ventana_actual = final_de_ventana - comienzo_de_ventana + 1
+            ventana_minima = min(ventana_minima, ventana_actual)
 
-    return tamaño_ventana_minima
+    return ventana_minima
 ```
 
 
